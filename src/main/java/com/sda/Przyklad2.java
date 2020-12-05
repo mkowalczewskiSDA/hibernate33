@@ -7,9 +7,9 @@ import org.hibernate.Session;
 public class Przyklad2 {
 
   public static void main(String[] args) {
-    //usePersist();
+    usePersist();
     //useMerge();
-    useDelete();
+    //useDelete();
   }
 
   public static void usePersist() {
