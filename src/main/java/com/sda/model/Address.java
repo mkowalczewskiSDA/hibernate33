@@ -2,13 +2,18 @@ package com.sda.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import lombok.Data;
+import lombok.ToString;
 
 @Entity
 @Data
+@ToString(exclude = "country")
 public class Address {
 
   @Id
@@ -25,6 +30,8 @@ public class Address {
   private String city;
   @Column(name = "ADD_POSTAL_CODE")
   private String postalCode;
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "ADD_CO_ID", referencedColumnName = "CO_ID")
   private Country country;
 
 }
