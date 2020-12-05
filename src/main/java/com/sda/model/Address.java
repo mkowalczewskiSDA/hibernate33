@@ -14,7 +14,7 @@ import lombok.ToString;
 @Entity
 @Data
 @ToString(exclude = "country")
-public class Address {
+public class Address implements ModelClass {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

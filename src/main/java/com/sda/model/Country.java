@@ -15,7 +15,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Entity
-public class Country {
+public class Country implements ModelClass {
 
   @Id
   @Column(name = "CO_ID")

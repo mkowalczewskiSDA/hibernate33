@@ -19,7 +19,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(exclude = "address")
-public class User {
+public class User implements ModelClass {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
