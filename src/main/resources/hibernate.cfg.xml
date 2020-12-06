@@ -20,6 +20,8 @@
     <mapping class="com.sda.model.Order"/>
     <mapping class="com.sda.model.Category"/>
     <mapping class="com.sda.model.Product"/>
+    <mapping class="com.sda.model.Customer"/>
+    <mapping class="com.sda.model.Employee"/>
 
   </session-factory>
 </hibernate-configuration>
