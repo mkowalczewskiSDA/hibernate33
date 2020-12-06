@@ -13,7 +13,7 @@ public class Przyklad1 {
     Address address = session.find(Address.class, 1);
     //System.out.println(address.getCountry());
     session.close();
-    System.out.println(address.getCountry());
+    //System.out.println(address.getCountry());
   }
 
 }

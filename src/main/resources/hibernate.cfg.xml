@@ -17,6 +17,9 @@
     <mapping class="com.sda.model.Country"/>
     <mapping class="com.sda.model.Address"/>
     <mapping class="com.sda.model.User"/>
+    <mapping class="com.sda.model.Order"/>
+    <mapping class="com.sda.model.Category"/>
+    <mapping class="com.sda.model.Product"/>
 
   </session-factory>
 </hibernate-configuration>
