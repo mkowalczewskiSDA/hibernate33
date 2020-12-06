@@ -51,4 +51,15 @@ public class OrderDao extends GenericDao<Order> {
     return orders;
   }
 
+  public List<Order> findByPriceLowerThan(double price) {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    List<Order> orders = session
+        .createQuery("Select o from Order where o.price < :price"
+        , Order.class)
+        .setParameter("price", price)
+        .getResultList();
+    session.close();
+    return orders;
+  }
+
 }
