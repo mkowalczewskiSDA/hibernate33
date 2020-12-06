@@ -34,4 +34,13 @@ public class UserCriteriaDao {
     return users;
   }
 
+  public List<User> findByEmail(String email) {
+    configureFrom();
+    criteriaQuery.select(from).where(criteriaBuilder.like(from.get(User_.email), email));
+    Query query = session.createQuery(criteriaQuery);
+    List<User> users = query.getResultList();
+    session.close();
+    return users;
+  }
+
 }
