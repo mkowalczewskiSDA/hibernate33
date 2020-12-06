@@ -2,6 +2,7 @@ package com.sda.dao;
 
 import com.sda.model.ModelClass;
 import com.sda.util.HibernateUtil;
+import java.util.List;
 import org.hibernate.Session;
 
 public class GenericDao<T extends ModelClass>  {
@@ -43,6 +44,25 @@ public class GenericDao<T extends ModelClass>  {
     }
     session.flush();
     session.close();
+  }
+
+  public List<T> getAll() {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    List all = session
+        .createQuery("from "+classParameter.getName()).getResultList();
+    session.close();
+    return all;
+  }
+
+  public List<T> getAll(int firstResult, int maxResults) {
+    Session session = HibernateUtil.getSessionFactory().openSession();
+    List all = session
+        .createQuery("from "+classParameter.getName())
+        .setFirstResult(firstResult)
+        .setMaxResults(maxResults)
+        .getResultList();
+    session.close();
+    return all;
   }
 
 }
