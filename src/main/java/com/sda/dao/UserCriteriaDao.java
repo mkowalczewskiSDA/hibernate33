@@ -12,11 +12,21 @@ import org.hibernate.Session;
 
 public class UserCriteriaDao {
 
+  Session session;
+  CriteriaBuilder criteriaBuilder;
+  CriteriaQuery<User> criteriaQuery;
+  Root<User> from;
+
+  void configureFrom(){
+    session = HibernateUtil.getSessionFactory().openSession();
+    criteriaBuilder = session.getCriteriaBuilder();
+    criteriaQuery = criteriaBuilder.createQuery(User.class);
+    from = criteriaQuery.from(User.class);
+  }
+
   public List<User> findUserWhereNameContains(String s) {
-    Session session = HibernateUtil.getSessionFactory().openSession();
-    CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-    CriteriaQuery criteriaQuery = criteriaBuilder.createQuery(User.class);
-    Root<User> from = criteriaQuery.from(User.class);
+    configureFrom();
+    from.fetch(User_.address);
     criteriaQuery.where(criteriaBuilder.like(from.get(User_.lastName), "%"+s+"%"));
     Query query = session.createQuery(criteriaQuery);
     List<User> users = query.getResultList();
