@@ -3,8 +3,10 @@ package com.sda.dao;
 import com.sda.model.User;
 import com.sda.model.User_;
 import com.sda.util.HibernateUtil;
+import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -38,6 +40,16 @@ public class UserCriteriaDao {
     configureFrom();
     criteriaQuery.select(from).where(criteriaBuilder.like(from.get(User_.email), email));
     Query query = session.createQuery(criteriaQuery);
+    List<User> users = query.getResultList();
+    session.close();
+    return users;
+  }
+
+  public List<User> findAllBornBetween(LocalDate date1, LocalDate date2) {
+    configureFrom();
+    criteriaQuery.select(from).where(criteriaBuilder
+        .between(from.get(User_.birthDate), date1, date2));
+    TypedQuery<User> query = session.createQuery(criteriaQuery);
     List<User> users = query.getResultList();
     session.close();
     return users;
