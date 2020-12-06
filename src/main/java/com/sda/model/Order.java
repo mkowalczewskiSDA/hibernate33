@@ -24,7 +24,7 @@ import lombok.ToString;
 @Table(name = "`Order`")
 @Data
 @NoArgsConstructor
-@ToString(exclude = "products")
+@ToString(exclude = {"products","user"})
 @EqualsAndHashCode(exclude = "products")
 public class Order implements ModelClass {
 

@@ -16,7 +16,7 @@ public class OrderDao extends GenericDao<Order> {
   public List<Order> findByDate(LocalDateTime dateTime) {
     Session session = HibernateUtil.getSessionFactory().openSession();
     List<Order> orders = session.createQuery(
-        "Select o from Order o where o.orderDate = :date", Order.class)
+        "Select o from Order o where o.orderDate like :date", Order.class)
         .setParameter("date", dateTime).getResultList();
     session.close();
     return orders;
