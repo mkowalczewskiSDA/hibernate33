@@ -18,7 +18,6 @@ import lombok.ToString;
 
 @Entity
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @ToString(exclude = "address")
 @NamedQueries({@NamedQuery(name = "user.select.byEmail",
@@ -43,5 +42,14 @@ public class User implements ModelClass {
 
   public User(int id) {
     this.id = id;
+  }
+
+  public User(String firstName, String lastName, String email,
+      Address address, LocalDate birthDate) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.birthDate = birthDate;
+    this.address = address;
   }
 }

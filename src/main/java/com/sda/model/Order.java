@@ -39,4 +39,9 @@ public class Order implements ModelClass {
   inverseJoinColumns = {@JoinColumn(name = "CRT_PRO_ID")})
   private Set<Product> products = new HashSet<>();
 
+  public Order(LocalDateTime orderDate, BigDecimal orderPrice, User user) {
+    this.orderDate = orderDate;
+    this.orderPrice = orderPrice;
+    this.user = user;
+  }
 }

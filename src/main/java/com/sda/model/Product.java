@@ -34,4 +34,10 @@ public class Product implements ModelClass {
   @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
   private Set<Order> orders = new HashSet<>();
 
+  public Product(String name, BigDecimal price, String description, Category category) {
+    this.name = name;
+    this.price = price;
+    this.description = description;
+    this.category = category;
+  }
 }

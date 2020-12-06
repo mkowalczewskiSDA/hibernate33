@@ -18,4 +18,7 @@ public class Category implements ModelClass {
   @Column(name = "CAT_NAME")
   private String name;
 
+  public Category(String name) {
+    this.name = name;
+  }
 }

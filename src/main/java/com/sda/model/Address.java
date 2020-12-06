@@ -8,7 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
@@ -34,4 +36,13 @@ public class Address implements ModelClass {
   @JoinColumn(name = "ADD_CO_ID", referencedColumnName = "CO_ID")
   private Country country;
 
+  public Address(String street, String buildingNo, String apartmentNo, String city,
+      String postalCode, Country country) {
+    this.street = street;
+    this.buildingNo = buildingNo;
+    this.apartmentNo = apartmentNo;
+    this.city = city;
+    this.postalCode = postalCode;
+    this.country = country;
+  }
 }
