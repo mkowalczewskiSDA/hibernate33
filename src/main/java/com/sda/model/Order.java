@@ -16,10 +16,16 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "`Order`")
 @Data
+@NoArgsConstructor
+@ToString(exclude = "products")
+@EqualsAndHashCode(exclude = "products")
 public class Order implements ModelClass {
 
   @Id

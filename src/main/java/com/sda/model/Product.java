@@ -13,9 +13,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
+@NoArgsConstructor
+@ToString(exclude = "orders")
+@EqualsAndHashCode(exclude = "orders")
 public class Product implements ModelClass {
 
   @Id
